@@ -1,0 +1,9 @@
+{
+  "name": "npm-init",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "config": "npm config set init-module $(pwd)/npm-init.js",
+    "env": "env"
+  }
+}
