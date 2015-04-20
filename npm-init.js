@@ -1,3 +1,4 @@
+var fs = require('fs');
 
 var isNew;
 
@@ -25,7 +26,8 @@ if (!package.author) {
   exports.author = 'Kengo Nakatsuka <kengo.nakatsuka@gmail.com>';
 }
 
-if (!package.bin) {
+if (!package.bin && fs.existsSync('bin')) {
+  package.bin = {};
 }
 
 if (!package.bugs) {
@@ -47,6 +49,7 @@ if (!package.homepage) {
 }
 
 if (!package.keywords) {
+  exports.keywords = [];
 }
 
 if (!package.license) {
@@ -54,6 +57,7 @@ if (!package.license) {
 }
 
 if (!package.main) {
+  exports.main = 'lib';
 }
 
 if (!package.repository) {
