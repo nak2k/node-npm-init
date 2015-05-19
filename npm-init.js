@@ -72,6 +72,10 @@ if (!package.scripts) {
   };
 }
 
+if (!package.files) {
+  exports.files = [];
+}
+
 function valueIfPublic(v) {
   return function(cb) {
     if (this.exports.private || package.private) {
