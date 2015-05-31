@@ -80,6 +80,8 @@ if (!exports.scripts.test) {
   }
 }
 
+exports.scripts = sortKeys(exports.scripts);
+
 if (!package.files) {
   exports.files = [];
 }
@@ -92,4 +94,12 @@ function valueIfPublic(v) {
       cb(null, v);
     }
   };
+}
+
+function sortKeys(obj) {
+  var result = {};
+  Object.keys(obj).sort().forEach(function(name) {
+    result[name] = obj[name];
+  });
+  return result;
 }
