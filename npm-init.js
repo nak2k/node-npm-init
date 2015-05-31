@@ -70,6 +70,14 @@ if (!package.repository) {
 if (!package.scripts) {
   exports.scripts = {
   };
+} else {
+  exports.scripts = package.scripts;
+}
+
+if (!exports.scripts.test) {
+  if (package.devDependencies && package.devDependencies.tape) {
+    exports.scripts.test = 'tape test/*.js';
+  }
 }
 
 if (!package.files) {
