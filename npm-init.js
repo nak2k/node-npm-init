@@ -1,6 +1,6 @@
-var fs = require('fs');
+const fs = require('fs');
 
-var isNew;
+let isNew;
 
 if (!package.name) {
   exports.name = basename.replace(/^node-/, '');
@@ -12,7 +12,7 @@ if (!package.version) {
 }
 
 if (isNew) {
-  exports.private = prompt('private', 'yes', function(v) {
+  exports.private = prompt('private', 'yes', v => {
     v = v.toLowerCase()[0];
     return (v !== 'f' && v !== 'n') ? true : undefined;
   });
@@ -90,9 +90,8 @@ if (!package.files) {
 }
 
 function sortKeys(obj) {
-  var result = {};
-  Object.keys(obj).sort().forEach(function(name) {
+  return Object.keys(obj).sort().reduce((result, name) => {
     result[name] = obj[name];
-  });
-  return result;
+    return result;
+  }, {});
 }
