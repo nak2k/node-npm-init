@@ -83,7 +83,10 @@ if (!exports.scripts.test) {
 exports.scripts = sortKeys(exports.scripts);
 
 if (!package.files) {
-  exports.files = [];
+  exports.files = [
+    'README.md',
+    'lib/',
+  ];
 }
 
 function valueIfPublic(v) {
