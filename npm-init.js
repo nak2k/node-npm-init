@@ -31,9 +31,9 @@ if (!package.bin && fs.existsSync('bin')) {
 }
 
 if (!package.bugs) {
-  exports.bugs = valueIfPublic({
+  exports.bugs = {
     url: "https://github.com/nak2k/" + basename + "/issues",
-  });
+  };
 }
 
 if (!package.dependencies) {
@@ -45,7 +45,7 @@ if (!package.devDependencies) {
 }
 
 if (!package.homepage) {
-  exports.homepage = valueIfPublic("https://github.com/nak2k/" + basename);
+  exports.homepage = "https://github.com/nak2k/" + basename;
 }
 
 if (!package.keywords) {
@@ -61,10 +61,10 @@ if (!package.main) {
 }
 
 if (!package.repository) {
-  exports.repository = valueIfPublic({
+  exports.repository = {
     type: "git",
     url: "https://github.com/nak2k/" + basename + ".git",
-  });
+  };
 }
 
 if (!package.scripts) {
@@ -87,16 +87,6 @@ if (!package.files) {
     'README.md',
     'lib/',
   ];
-}
-
-function valueIfPublic(v) {
-  return function(cb) {
-    if (this.exports.private || package.private) {
-      cb();
-    } else {
-      cb(null, v);
-    }
-  };
 }
 
 function sortKeys(obj) {
