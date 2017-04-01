@@ -1,10 +1,9 @@
 const fs = require('fs');
 
-let isNew;
+const isNew = !package.name;
 
 if (!package.name) {
   exports.name = basename.replace(/^node-/, '');
-  isNew = true;
 }
 
 if (!package.version) {
@@ -32,7 +31,7 @@ if (!package.bin && fs.existsSync('bin')) {
 
 if (!package.bugs) {
   exports.bugs = {
-    url: "https://github.com/nak2k/" + basename + "/issues",
+    url: `https://github.com/nak2k/${basename}/issues`,
   };
 }
 
@@ -45,7 +44,7 @@ if (!package.devDependencies) {
 }
 
 if (!package.homepage) {
-  exports.homepage = "https://github.com/nak2k/" + basename;
+  exports.homepage = `https://github.com/nak2k/${basename}`;
 }
 
 if (!package.keywords) {
@@ -62,17 +61,12 @@ if (!package.main) {
 
 if (!package.repository) {
   exports.repository = {
-    type: "git",
-    url: "https://github.com/nak2k/" + basename + ".git",
+    type: 'git',
+    url: `https://github.com/nak2k/${basename}.git`,
   };
 }
 
-if (!package.scripts) {
-  exports.scripts = {
-  };
-} else {
-  exports.scripts = package.scripts;
-}
+exports.scripts = package.scripts || {};
 
 if (!exports.scripts.test) {
   if (package.devDependencies && package.devDependencies.tape) {
@@ -83,11 +77,13 @@ if (!exports.scripts.test) {
 exports.scripts = sortKeys(exports.scripts);
 
 if (!package.files) {
-  exports.files = [
+  package.files = [
     'README.md',
     'lib/',
   ];
 }
+
+exports.files = package.files.sort();
 
 function sortKeys(obj) {
   return Object.keys(obj).sort().reduce((result, name) => {
