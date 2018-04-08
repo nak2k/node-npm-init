@@ -77,13 +77,13 @@ if (!exports.scripts.test) {
 exports.scripts = sortKeys(exports.scripts);
 
 if (!package.files) {
-  package.files = [
+  exports.files = [
     'README.md',
     'lib/',
   ];
+} else {
+  exports.files = package.files.sort();
 }
-
-exports.files = package.files.sort();
 
 function sortKeys(obj) {
   return Object.keys(obj).sort().reduce((result, name) => {
