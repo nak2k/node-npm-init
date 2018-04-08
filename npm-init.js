@@ -74,6 +74,10 @@ if (!exports.scripts.test) {
   }
 }
 
+if (!exports.private && !exports.scripts.prepublishOnly && exports.scripts.test) {
+  exports.scripts.prepublishOnly = 'npm test';
+}
+
 exports.scripts = sortKeys(exports.scripts);
 
 if (!package.files) {
