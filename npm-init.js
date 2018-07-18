@@ -79,6 +79,10 @@ if (!exports.private && !exports.scripts.prepublishOnly && exports.scripts.test)
   exports.scripts.prepublishOnly = 'npm test';
 }
 
+if (!exports.private && !exports.scripts.postpublish) {
+  exports.scripts.postpublish = 'npm-sns';
+}
+
 exports.scripts = sortScripts(exports.scripts);
 
 if (!package.files) {
