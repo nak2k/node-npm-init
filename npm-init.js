@@ -7,7 +7,7 @@ if (!package.name) {
 }
 
 if (!package.version) {
-  exports.version = '0.0.1';
+  exports.version = '0.1.0';
 }
 
 if (isNew) {
