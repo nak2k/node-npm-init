@@ -5,5 +5,8 @@
   "scripts": {
     "config": "npm config set init-module $(pwd)/npm-init.js",
     "env": "env"
+  },
+  "dependencies": {
+    "scripts-sort": "0.0.2"
   }
 }

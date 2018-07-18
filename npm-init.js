@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { sortScripts } = require('scripts-sort');
 
 const isNew = !package.name;
 
@@ -78,7 +79,7 @@ if (!exports.private && !exports.scripts.prepublishOnly && exports.scripts.test)
   exports.scripts.prepublishOnly = 'npm test';
 }
 
-exports.scripts = sortKeys(exports.scripts);
+exports.scripts = sortScripts(exports.scripts);
 
 if (!package.files) {
   exports.files = [
@@ -87,11 +88,4 @@ if (!package.files) {
   ];
 } else {
   exports.files = package.files.sort();
-}
-
-function sortKeys(obj) {
-  return Object.keys(obj).sort().reduce((result, name) => {
-    result[name] = obj[name];
-    return result;
-  }, {});
 }
